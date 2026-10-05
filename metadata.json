@@ -1,0 +1,5 @@
+{
+  "name": "Macro Auto",
+  "description": "Macro Auto - Electron Desktop App tự động hóa thao tác chuột và bàn phím sử dụng uiohook và koffi.",
+  "requestFramePermissions": []
+}

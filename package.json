@@ -1,0 +1,64 @@
+{
+  "name": "phantom-rpa",
+  "productName": "macro-auto",
+  "private": true,
+  "version": "0.0.7",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "node scripts/dev-desktop.cjs",
+    "web": "node node_modules/vite/bin/vite.js --port=3000 --host=0.0.0.0",
+    "build": "node node_modules/vite/bin/vite.js build",
+    "desktop": "node scripts/launch-desktop.cjs",
+    "preview": "node node_modules/vite/bin/vite.js preview",
+    "clean": "node -e \"const fs=require('node:fs'); fs.rmSync('dist',{recursive:true,force:true}); fs.rmSync('release',{recursive:true,force:true}); fs.rmSync('server.js',{force:true})\"",
+    "lint": "node node_modules/typescript/bin/tsc --noEmit",
+    "prepackage": "npm version patch --no-git-tag-version",
+    "package": "npm run lint && npm run build && node node_modules/electron-builder/cli.js --win"
+  },
+  "dependencies": {
+    "@koromix/koffi-win32-x64": "3.3.1",
+    "koffi": "^3.3.1",
+    "node-gyp-build": "^4.8.4",
+    "uiohook-napi": "^1.5.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "lucide-react": "^0.546.0",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  },
+  "build": {
+    "appId": "com.ponytail.macro",
+    "files": [
+      "dist/**",
+      "electron/**"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "**/node_modules/**/*.node",
+      "**/node_modules/uiohook-napi/**"
+    ],
+    "npmRebuild": false,
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  }
+}
