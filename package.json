@@ -1,8 +1,8 @@
 {
-  "name": "phantom-rpa",
+  "name": "macro-auto",
   "productName": "macro-auto",
   "private": true,
-  "version": "0.0.7",
+  "version": "0.0.6",
   "type": "module",
   "main": "electron/main.cjs",
   "scripts": {
@@ -44,10 +44,7 @@
       "electron/**"
     ],
     "asar": true,
-    "asarUnpack": [
-      "**/node_modules/**/*.node",
-      "**/node_modules/uiohook-napi/**"
-    ],
+    "asarUnpack": "**/node_modules/**/*.node",
     "npmRebuild": false,
     "directories": {
       "output": "release"
